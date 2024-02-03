@@ -1,0 +1,38 @@
+﻿@model List<Advertisement>;
+
+<h1>Products List</h1>
+<p>You can manage the available products here.</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+            <th scope="col">City</th>
+            <th scope="col">ContactInfo</th>
+            <th scope="col">Picture</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@i.Id</th>
+                <td>@i.Title</td>
+                <td>@i.Price$</td>
+                <td>@i.Category</td>
+                <td>@i.City</td>
+                <td>@i.ContactInfo </td>
+                <td><a href="@i.PictureURLs[i.IdMainPictureURL]"></a></td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@i.Id">Delete</a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@i.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
